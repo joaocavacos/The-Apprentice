@@ -6,13 +6,16 @@ using UnityEngine.UI;
 
 public class ManaSystem : MonoBehaviour
 {
-    [SerializeField] private float currentMana;
+    [SerializeField] float currentMana;
+    [SerializeField] float maxMana;
 
     public Slider manaSlider;
 
-    void Awake()
+    void Start()
     {
-        currentMana = manaSlider.value;
+        manaSlider.value = currentMana;
+        manaSlider.maxValue = maxMana;
+        currentMana = maxMana;
     }
 
     public float CurrentMana
@@ -20,11 +23,12 @@ public class ManaSystem : MonoBehaviour
         get => currentMana;
         set
         {
-            if (value > manaSlider.maxValue) currentMana = manaSlider.maxValue;
-            if (value < manaSlider.maxValue) currentMana = value;
-            else if (value <= manaSlider.minValue) value = 0;
+            if (value > maxMana) currentMana = maxMana;
+            if (value < maxMana) currentMana = value;
+            else if (value <= 0) value = 0;
         }
     }
+    
 
     public void UseAbility(float manaUsage)
     {

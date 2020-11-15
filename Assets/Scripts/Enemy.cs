@@ -4,27 +4,32 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    public int enemyHP;
+    public float enemyHP;
     public float enemySpeed;
+    public float enemyDamage;
 
     public Animator enemyAnim;
+    Enemy enemy;
 
     void Start()
     {
         enemyAnim = GetComponent<Animator>();
+        enemy = GetComponent<Enemy>();
     }
 
     void Update()
     {
-        if(enemyHP <= 0)
+        if(enemy.enemyHP <= 0)
 		{
+            Debug.Log("Enemy destroyed");
             Destroy(gameObject);
 		}
     }
 
-    public void TakeDamage(int damage)
+    public void TakeDamage(float damage)
 	{
-        enemyHP -= damage;
-        Debug.Log("Damage taken");
-	}
+        enemy.enemyHP -= damage;
+        Debug.Log("Damage taken: " + damage);
+        Debug.Log($"HP: {enemyHP}");
+    }
 }

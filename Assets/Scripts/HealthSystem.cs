@@ -5,62 +5,46 @@ using UnityEngine.UI;
 
 public class HealthSystem : MonoBehaviour
 {
-	[SerializeField] int currentHearts;
-	[SerializeField] int maxHearts;
+	public float currentHealth;
+	public float maxHealth;
 
-    public Image[] hearts;
-    
-    public Sprite fullHeart;
-    public Sprite emptyHeart;
-
-    public int CurrentHearts
-    {
-	    get => currentHearts;
-	    set
-	    {
-		    if (value > maxHearts) currentHearts = maxHearts;
-		    if (value < maxHearts) currentHearts = value;
-		    else if (value <= 0) value = 0;  
-	    }
-    }
-
+	public Slider hpSlider;
 
     void Awake()
     {
-	    currentHearts = maxHearts;
+		currentHealth = hpSlider.value;
+		maxHealth = hpSlider.maxValue;
+		currentHealth = maxHealth;
     }
     
     void Update()
-	{
-		CheckHP();
-	}
-
-    public void TakeDamage(int damage)
-	{
-		currentHearts -= damage;
-	}
-
-    private void CheckHP()
     {
-	    for (int i = 0; i < hearts.Length; i++)
+		DeathCheck();
+    }
+    
+    public float CurrentHealth //get and set for currentHealth
+    {
+	    get => currentHealth;
+	    set
 	    {
-		    if(i < currentHearts)
-		    {
-			    hearts[i].sprite = fullHeart;
-		    }
-		    else
-		    {
-			    hearts[i].sprite = emptyHeart;
-		    }
-
-		    if (i < maxHearts)
-		    {
-			    hearts[i].enabled = true;
-		    }
-		    else
-		    {
-			    hearts[i].enabled = false;
-		    }
+		    if (value > maxHealth) currentHealth = maxHealth;
+		    if (value < maxHealth) currentHealth = value;
+		    else if (value <= 0) value = 0;  
 	    }
     }
+    
+
+    public void TakeDamage(float damage) //Take damage from attack
+	{
+		CurrentHealth -= damage;
+	}
+
+	public void DeathCheck() //Checks if is dead
+	{
+		if(CurrentHealth <= 0)
+		{
+			Debug.Log("Dead");
+		}
+	}
+    
 }

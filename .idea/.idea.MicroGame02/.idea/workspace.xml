@@ -17,10 +17,13 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/Assets/Scripts/PlayerHP.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/HealthSystem.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Player.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/ManaSystem.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/DashMove.cs" />
+        <option value="$PROJECT_DIR$/Assets/HeartHeal.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/HealthSystem.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/HeartHeal.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/PlayerAttack.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/ManaSystem.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/PlayerMovement.cs" />
       </list>
     </option>
@@ -66,6 +69,8 @@
       <option name="presentableId" value="Default" />
       <updated>1604951369356</updated>
       <workItem from="1604951388045" duration="8316000" />
+      <workItem from="1605119439630" duration="832000" />
+      <workItem from="1605293408468" duration="4928000" />
     </task>
     <servers />
   </component>
