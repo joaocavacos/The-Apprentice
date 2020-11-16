@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class HeartHeal : MonoBehaviour
 {
-    private int healAmmount = 30;
+    private float healAmmount = 30f;
     
     private HealthSystem playerHp;
 
@@ -16,10 +16,10 @@ public class HeartHeal : MonoBehaviour
     
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (playerHp.currentHealth < playerHp.maxHealth)
+        if (playerHp.hpSlider.value < playerHp.hpSlider.maxValue)
         {
             Destroy(gameObject);
-            playerHp.currentHealth += healAmmount;
+            playerHp.hpSlider.value += healAmmount;
         }
     }
 

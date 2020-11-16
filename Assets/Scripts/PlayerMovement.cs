@@ -16,7 +16,6 @@ public class PlayerMovement : MonoBehaviour
 
     private Rigidbody2D rb;
     public Animator animator;
-    private ManaSystem _manaSystem;
 
     Vector2 movement;
 
@@ -24,7 +23,6 @@ public class PlayerMovement : MonoBehaviour
 	{
 		rb = GetComponent<Rigidbody2D>();
 		dashTime = startDashTime;
-		_manaSystem = GetComponent<ManaSystem>();
 	}
 
     void Update()
@@ -86,7 +84,6 @@ public class PlayerMovement : MonoBehaviour
 						break;
 				}
 			}
-			_manaSystem.UseAbility(manaUsage); // Not working , decreases a lot more
 		}
 	}
 }

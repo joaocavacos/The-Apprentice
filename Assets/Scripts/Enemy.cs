@@ -26,7 +26,7 @@ public class Enemy : MonoBehaviour
 		}
     }
 
-    public void TakeDamage(float damage)
+    public void TakeDamageEnemy(float damage)
 	{
         enemy.enemyHP -= damage;
         Debug.Log("Damage taken: " + damage);

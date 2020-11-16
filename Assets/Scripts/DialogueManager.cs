@@ -8,32 +8,46 @@ public class DialogueManager : MonoBehaviour
 
     public Text charName;
     public Text dialogue;
-    public Image charImage;
+
+    public static DialogueManager instance;
 
     public GameObject dialogueBox;
 
     private Queue<string> sentences;
 
-    void Start()
+	void Awake()
+	{
+        instance = this;
+	}
+
+	void Start()
     {
         sentences = new Queue<string>();
-        charImage = GetComponent<Image>();
     }
 
     public void StartDialogue(Dialogue dialogue){
-
-        dialogueBox.SetActive(true);
-
-        charName.text = dialogue.name;
-
-        sentences.Clear();
-
-		foreach (string sentence in dialogue.sentences)
+		if (!dialogueBox.activeSelf)
 		{
-            sentences.Enqueue(sentence);
-		}
+            Time.timeScale = 0;
 
-        DisplayNextSentence();
+            dialogueBox.SetActive(true);
+
+            charName.text = dialogue.name;
+
+            sentences.Clear();
+
+            foreach (string sentence in dialogue.sentences)
+            {
+                sentences.Enqueue(sentence);
+            }
+
+            DisplayNextSentence();
+		}
+		else
+		{
+            DisplayNextSentence();
+        }
+       
 	}
 
     public void DisplayNextSentence()
@@ -64,6 +78,7 @@ public class DialogueManager : MonoBehaviour
 
     public void EndDialogue()
 	{
+        Time.timeScale = 1;
         dialogueBox.SetActive(false);
 	}
 }

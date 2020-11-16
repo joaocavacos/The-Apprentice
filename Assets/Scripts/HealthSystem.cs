@@ -34,14 +34,14 @@ public class HealthSystem : MonoBehaviour
     }
     
 
-    public void TakeDamage(float damage) //Take damage from attack
+    public void TakeDamagePlayer(float damage) //Take damage from attack
 	{
-		CurrentHealth -= damage;
+		hpSlider.value -= damage;
 	}
 
 	public void DeathCheck() //Checks if is dead
 	{
-		if(CurrentHealth <= 0)
+		if(hpSlider.value <= 0)
 		{
 			Debug.Log("Dead");
 		}

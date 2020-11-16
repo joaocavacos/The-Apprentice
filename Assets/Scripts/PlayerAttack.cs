@@ -33,6 +33,8 @@ public class PlayerAttack : MonoBehaviour
 
     public void Attack()
 	{
+        isCharged = false;
+
         if (Input.GetKey(KeyCode.Joystick1Button1) || Input.GetKey(KeyCode.Space)) //Charge attack
         {
             timePressed += Time.deltaTime;
@@ -45,13 +47,14 @@ public class PlayerAttack : MonoBehaviour
 
 		if (isCharged)
 		{
+
             playerAnim.SetTrigger("Attack");
             Collider2D[] enemiesToDamage = Physics2D.OverlapCircleAll(attackPos.position, attackRange, isEnemy); //creates invisible "raycast" circle that checks surroundings
             Debug.Log("Time pressed: "+ timePressed);
 
             for (int i = 0; i < enemiesToDamage.Length; i++)
             {
-                enemiesToDamage[i].GetComponent<Enemy>().TakeDamage(damage * timePressed); //Do damage from how much you pressed
+                enemiesToDamage[i].GetComponent<Enemy>().TakeDamageEnemy(damage * timePressed); //Do damage from how much you pressed
                 isCharged = false;
                 Debug.Log("Total damage: " + damage * timePressed);
             }
