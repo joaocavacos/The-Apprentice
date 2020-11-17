@@ -6,6 +6,7 @@ TagManager:
   tags:
   - NPC
   - Enemy
+  - Boss
   layers:
   - Default
   - TransparentFX
@@ -18,7 +19,7 @@ TagManager:
   - Enemy
   - NPC
   - Minimap
-  - 
+  - Boss
   - 
   - 
   - 

@@ -48,7 +48,7 @@ public class EnemyFollow : MonoBehaviour
 
     private IEnumerator Attack() //Corountine for attacking the player, 1 second per attack
 	{
-        health.TakeDamagePlayer(enemy.enemyDamage);
+        health.TakeDamage(enemy.enemyDamage);
         canAttack = false;
         yield return new WaitForSeconds(2f);
         canAttack = true;

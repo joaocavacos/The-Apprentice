@@ -8,8 +8,8 @@ public class Enemy : MonoBehaviour
     public float enemySpeed;
     public float enemyDamage;
 
-    public Animator enemyAnim;
-    Enemy enemy;
+    private Animator enemyAnim;
+    private Enemy enemy;
 
     void Start()
     {
@@ -29,7 +29,7 @@ public class Enemy : MonoBehaviour
     public void TakeDamageEnemy(float damage)
 	{
         enemy.enemyHP -= damage;
-        Debug.Log("Damage taken: " + damage);
-        Debug.Log($"HP: {enemyHP}");
-    }
+        Debug.Log("Enemy took some damage: " + damage);
+        Debug.Log("Enemy hp: " + enemy.enemyHP);
+	}
 }

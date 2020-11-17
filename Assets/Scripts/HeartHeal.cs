@@ -16,10 +16,10 @@ public class HeartHeal : MonoBehaviour
     
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (playerHp.hpSlider.value < playerHp.hpSlider.maxValue)
+        if (playerHp.CurrentHealth < playerHp.maxHealth)
         {
             Destroy(gameObject);
-            playerHp.hpSlider.value += healAmmount;
+            playerHp.CurrentHealth += healAmmount;
         }
     }
 

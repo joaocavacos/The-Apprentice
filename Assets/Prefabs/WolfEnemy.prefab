@@ -98,7 +98,7 @@ GameObject:
   - component: {fileID: 4996575731623212005}
   m_Layer: 8
   m_Name: WolfEnemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -184,7 +184,6 @@ MonoBehaviour:
   enemyHP: 100
   enemySpeed: 3
   enemyDamage: 20
-  enemyAnim: {fileID: 4996575731623212005}
 --- !u!114 &4996575731623212004
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -247,7 +246,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!95 &4996575731623212005
 Animator:
   serializedVersion: 3

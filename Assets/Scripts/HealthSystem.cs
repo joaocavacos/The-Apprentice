@@ -9,16 +9,18 @@ public class HealthSystem : MonoBehaviour
 	public float maxHealth;
 
 	public Slider hpSlider;
+	public Text numberHp;
 
     void Awake()
     {
-		currentHealth = hpSlider.value;
-		maxHealth = hpSlider.maxValue;
+		hpSlider.maxValue = maxHealth;
 		currentHealth = maxHealth;
     }
     
     void Update()
     {
+		hpSlider.value = CurrentHealth;
+		numberHp.text = Mathf.RoundToInt(hpSlider.value).ToString();
 		DeathCheck();
     }
     
@@ -34,14 +36,15 @@ public class HealthSystem : MonoBehaviour
     }
     
 
-    public void TakeDamagePlayer(float damage) //Take damage from attack
+    public void TakeDamage(float damage) //Take damage from attack
 	{
-		hpSlider.value -= damage;
+		CurrentHealth -= damage;
+		Debug.Log("Damage taken from enemy: " + damage);
 	}
 
 	public void DeathCheck() //Checks if is dead
 	{
-		if(hpSlider.value <= 0)
+		if(CurrentHealth <= 0)
 		{
 			Debug.Log("Dead");
 		}

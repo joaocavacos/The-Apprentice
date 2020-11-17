@@ -12,6 +12,8 @@ public class PlayerMovement : MonoBehaviour
     public float manaUsage;
     private float dashTime;
 
+	private Vector3 startScale;
+
     private int direction;
 
     private Rigidbody2D rb;
@@ -23,6 +25,7 @@ public class PlayerMovement : MonoBehaviour
 	{
 		rb = GetComponent<Rigidbody2D>();
 		dashTime = startDashTime;
+		startScale = transform.localScale;
 	}
 
     void Update()
@@ -35,8 +38,11 @@ public class PlayerMovement : MonoBehaviour
         animator.SetFloat("Vertical", movement.y);
         animator.SetFloat("Speed", movement.sqrMagnitude); //SqrMagnitude for optimization
 
+		if(moveX > 0) transform.localScale = startScale;
+		else if(moveX < 0) transform.localScale = new Vector3(-startScale.x, startScale.y, startScale.z); //flip character
 
-    }
+
+	}
 
 	void FixedUpdate()
 	{
