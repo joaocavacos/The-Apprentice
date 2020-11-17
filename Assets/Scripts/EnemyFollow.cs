@@ -8,6 +8,7 @@ public class EnemyFollow : MonoBehaviour
 
     private Enemy enemy;
     private HealthSystem health;
+    private Animator animator;
 
     float distanceEnemies;
     public float distancetoAttack;
@@ -21,6 +22,7 @@ public class EnemyFollow : MonoBehaviour
 
     void Start()
     {
+        animator = GetComponent<Animator>();
         enemy = GetComponent<Enemy>();
         health = GameObject.FindGameObjectWithTag("Player").GetComponent<HealthSystem>();
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
@@ -37,20 +39,23 @@ public class EnemyFollow : MonoBehaviour
         if (distanceEnemies < distancetoAttack)
         {
             //enemy.transform.position = Vector2.MoveTowards(enemy.transform.position, player.position, enemy.enemySpeed * Time.deltaTime);
+            animator.SetBool("isRunning", true);
             enemy.transform.position = Vector2.MoveTowards(enemy.transform.position, enemy.transform.position + enemyDirection * distance, enemy.enemySpeed * Time.deltaTime);
         }
         if(distanceEnemies <= rangeAttack && canAttack)
 		{
+            animator.SetBool("isRunning", false);
             StartCoroutine(Attack());
 		}
         
     }
 
-    private IEnumerator Attack() //Corountine for attacking the player, 1 second per attack
+    private IEnumerator Attack() //Corountine for attacking the player, 2 second per attack
 	{
+        animator.SetTrigger("Attack");
         health.TakeDamage(enemy.enemyDamage);
         canAttack = false;
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1.25f);
         canAttack = true;
         Debug.Log("Enemy attacked");
 	}

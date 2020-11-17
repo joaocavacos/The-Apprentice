@@ -5,39 +5,26 @@ using UnityEngine.UI;
 
 public class Boss : MonoBehaviour
 {
-    public float health;
-    public int damage;
+    public bool isFlipped = false;
 
-    private float timebtwDamage = 1.5f;
+    public Transform player;
 
-    public Slider bossHealth;
-    public Text hpNumber;
-    private Animator bossAnim;
-
-	void Start()
+    public void LookatPlayer()
 	{
-        bossAnim = GetComponent<Animator>();
-	}
+        Vector3 flip = transform.localScale;
+        flip.z *= 1f;
 
-	void Update()
-    {
-        if(health <= 0)
+        if(transform.position.x > player.position.x && isFlipped)
 		{
-            Debug.Log("Boss has died");
+			transform.localScale = flip;
+            transform.Rotate(0f, 180f, 0f);
+            isFlipped = false;
 		}
-
-        if (timebtwDamage > 0) //The boss doesn't attack constantly
-        {
-            timebtwDamage -= Time.deltaTime;
-        }
-
-        bossHealth.value = health;
-        hpNumber.text = Mathf.RoundToInt(health).ToString();
-    }
-
-    public void TakeDamageBoss(float damage)
-	{
-        health -= damage;
-        Debug.Log("Boss took: " + damage);
+        else if(transform.position.x < player.position.x && !isFlipped)
+		{
+            transform.localScale = flip;
+            transform.Rotate(0f, 180f, 0f);
+            isFlipped = true;
+		}
 	}
 }

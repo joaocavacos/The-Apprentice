@@ -24,6 +24,7 @@ public class PlayerAttack : MonoBehaviour
 	void Update()
     {
         AttackEnemies();
+        AttackBoss();
     }
 
 	void OnDrawGizmos() //Do this to check the range of the attack in a visual way
@@ -79,17 +80,17 @@ public class PlayerAttack : MonoBehaviour
 
         if (isCharged)
         {
-
             playerAnim.SetTrigger("Attack");
-            Collider2D[] enemiesToDamage = Physics2D.OverlapCircleAll(attackPos.position, attackRange, isBoss); //creates invisible "raycast" circle that checks surroundings
+            Collider2D[] colInfo = Physics2D.OverlapCircleAll(attackPos.position, attackRange, isBoss); //creates invisible "raycast" circle that checks surroundings
             Debug.Log("Time pressed: " + timePressed);
 
-            for (int i = 0; i < enemiesToDamage.Length; i++)
+            for (int i = 0; i < colInfo.Length; i++)
             {
-                enemiesToDamage[i].GetComponent<Enemy>().TakeDamageEnemy(damage * timePressed); //Do damage from how much you pressed
+                colInfo[i].GetComponent<BossHealth>().TakeDamageBoss(damage * timePressed); //Do damage from how much you pressed
                 isCharged = false;
                 Debug.Log("Total damage: " + damage * timePressed);
-            }
+			}
+
             timePressed = 1f;
         }
     }
