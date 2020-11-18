@@ -10,9 +10,11 @@ public class HealthSystem : MonoBehaviour
 
 	public Slider hpSlider;
 	public Text numberHp;
+	ActionHandler changeScene;
 
     void Awake()
     {
+		changeScene = GetComponent<ActionHandler>();
 		hpSlider.maxValue = maxHealth;
 		currentHealth = maxHealth;
     }
@@ -31,7 +33,7 @@ public class HealthSystem : MonoBehaviour
 	    {
 		    if (value > maxHealth) currentHealth = maxHealth;
 		    if (value < maxHealth) currentHealth = value;
-		    else if (value <= 0) value = 0;  
+		    else if (value <= 0) currentHealth = 0;  
 	    }
     }
     
@@ -46,7 +48,7 @@ public class HealthSystem : MonoBehaviour
 	{
 		if(CurrentHealth <= 0)
 		{
-			Debug.Log("Dead");
+			changeScene.DeadScreen();
 		}
 	}
     

@@ -10,7 +10,7 @@ public class SettingsManager : MonoBehaviour
 
     public GameObject mainmenu;
     public GameObject settings;
-    //public GameObject credits;
+    public GameObject credits;
 
     public AudioMixer soundMixer;
     public AudioMixer musicMixer;
@@ -72,14 +72,27 @@ public class SettingsManager : MonoBehaviour
 	{
         mainmenu.SetActive(false);
         settings.SetActive(true);
-        //credits.SetActive(false);
+        credits.SetActive(false);
 	}
 
-    public void SaveSettings() //Close and save settings 
+    public void SaveSettings() //Close and save settings
     {
         mainmenu.SetActive(true);
         settings.SetActive(false);
-        //credits.SetActive(false);
+        credits.SetActive(false);
     }
 
+    public void OpenCredits() //Open credits
+	{
+        mainmenu.SetActive(false);
+        settings.SetActive(false);
+        credits.SetActive(true);
+    }
+
+    public void CloseCredits() //CLose credits
+    {
+        mainmenu.SetActive(true);
+        settings.SetActive(false);
+        credits.SetActive(false);
+    }
 }

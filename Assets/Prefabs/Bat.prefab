@@ -100,7 +100,6 @@ MonoBehaviour:
   enemyHP: 50
   enemySpeed: 6
   enemyDamage: 10
-  enemyAnim: {fileID: 4902910271351096545}
 --- !u!114 &2508377459715762574
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -115,7 +114,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   distancetoAttack: 5
   playerOffset: 1.2
-  rangeAttack: 1.2
+  rangeAttack: 2
   canAttack: 1
 --- !u!95 &4902910271351096545
 Animator:

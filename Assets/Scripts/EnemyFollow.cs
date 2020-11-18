@@ -36,15 +36,18 @@ public class EnemyFollow : MonoBehaviour
         distanceEnemies = Vector2.Distance(player.position, enemy.transform.position);
         distance = distanceEnemies - playerOffset;
 
-        if (distanceEnemies < distancetoAttack)
+        animator.SetBool("isRunning", false);
+
+        if (distanceEnemies < distancetoAttack) //Runs after player if it's in his range of vision
         {
             //enemy.transform.position = Vector2.MoveTowards(enemy.transform.position, player.position, enemy.enemySpeed * Time.deltaTime);
+            animator.SetBool("Attack", false);
             animator.SetBool("isRunning", true);
             enemy.transform.position = Vector2.MoveTowards(enemy.transform.position, enemy.transform.position + enemyDirection * distance, enemy.enemySpeed * Time.deltaTime);
         }
-        if(distanceEnemies <= rangeAttack && canAttack)
+        if(distanceEnemies <= rangeAttack && canAttack) //if it's in range of attacking
 		{
-            animator.SetBool("isRunning", false);
+            animator.SetBool("Attack", true);
             StartCoroutine(Attack());
 		}
         
@@ -52,10 +55,9 @@ public class EnemyFollow : MonoBehaviour
 
     private IEnumerator Attack() //Corountine for attacking the player, 2 second per attack
 	{
-        animator.SetTrigger("Attack");
         health.TakeDamage(enemy.enemyDamage);
         canAttack = false;
-        yield return new WaitForSeconds(1.25f);
+        yield return new WaitForSeconds(1f);
         canAttack = true;
         Debug.Log("Enemy attacked");
 	}
@@ -64,5 +66,6 @@ public class EnemyFollow : MonoBehaviour
 	{
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, distancetoAttack);
+        Gizmos.DrawWireSphere(transform.position, rangeAttack);
 	}
 }

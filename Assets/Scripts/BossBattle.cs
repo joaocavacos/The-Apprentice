@@ -2,11 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
+using Cinemachine.Utility;
+using Cinemachine;
 public class BossBattle : MonoBehaviour
 {
     public GameObject boss;
 	public GameObject block;
+
+	ActionHandler changeScene;
+
+	public CinemachineTargetGroup targetGroup;
+
+	private void Start()
+	{
+		changeScene = GetComponent<ActionHandler>();
+	}
 
 	private void OnTriggerStay2D(Collider2D other)
 	{
@@ -15,6 +25,7 @@ public class BossBattle : MonoBehaviour
 			Debug.Log("Boss battle start");
 			boss.SetActive(true);
 			block.SetActive(true);
+			targetGroup.AddMember(boss.transform, 2, 6);
 		}
 	}
 
@@ -32,7 +43,7 @@ public class BossBattle : MonoBehaviour
 		if(boss == null)
 		{
 			boss = null;
-			//SceneManager.LoadScene("Victory Screen");
+			changeScene.Victory();
 		}
 	}
 }

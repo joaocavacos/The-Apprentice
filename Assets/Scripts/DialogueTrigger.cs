@@ -5,7 +5,7 @@ using UnityEngine;
 public class DialogueTrigger : MonoBehaviour
 {
     public Dialogue dialogue;
-	private bool playerinRange;
+	[SerializeField] private bool playerinRange;
 
 	//public GameObject dialogueBox;
 
@@ -14,7 +14,6 @@ public class DialogueTrigger : MonoBehaviour
 		if((Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.Joystick1Button0)) && playerinRange == true )
 		{
 			TriggerDialogue();
-			Debug.Log("A");
 		}
 		/*
 		else if(playerinRange == false)
