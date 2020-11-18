@@ -13,6 +13,11 @@ public class PlayerAttack : MonoBehaviour
     public LayerMask isEnemy;
     public LayerMask isBoss;
 
+    public AudioSource damageSound;
+    public AudioSource swordSwing;
+
+    public ParticleSystem chargeParticle;
+
     private float timePressed;
     bool isCharged = false;
 
@@ -39,13 +44,21 @@ public class PlayerAttack : MonoBehaviour
 
         if (Input.GetKey(KeyCode.Joystick1Button1) || Input.GetKey(KeyCode.Space)) //Charge attack
         {
+
+            swordSwing.Play();
             timePressed += Time.deltaTime;
         }
+        if (Input.GetKeyDown(KeyCode.Joystick1Button1) || Input.GetKeyDown(KeyCode.Space)) //Charge attack
+        {
 
-        if(Input.GetKeyUp(KeyCode.Joystick1Button1) || Input.GetKeyUp(KeyCode.Space)) //Release
+            chargeParticle.Play(true);
+        }
+
+        if (Input.GetKeyUp(KeyCode.Joystick1Button1) || Input.GetKeyUp(KeyCode.Space)) //Release
 		{
             isCharged = true;
-		}
+            chargeParticle.Stop(true);
+        }
 
 		if (isCharged)
 		{
@@ -57,6 +70,7 @@ public class PlayerAttack : MonoBehaviour
             for (int i = 0; i < enemiesToDamage.Length; i++)
             {
                 enemiesToDamage[i].GetComponent<Enemy>().TakeDamageEnemy(damage * timePressed); //Do damage from how much you pressed
+                damageSound.Play();
                 isCharged = false;
                 Debug.Log("Total damage: " + damage * timePressed);
             }
@@ -77,6 +91,7 @@ public class PlayerAttack : MonoBehaviour
         {
             isCharged = true;
         }
+       
 
         if (isCharged)
         {
@@ -87,6 +102,7 @@ public class PlayerAttack : MonoBehaviour
             for (int i = 0; i < colInfo.Length; i++)
             {
                 colInfo[i].GetComponent<BossHealth>().TakeDamageBoss(damage * timePressed); //Do damage from how much you pressed
+                damageSound.Play();
                 isCharged = false;
                 Debug.Log("Total damage: " + damage * timePressed);
 			}

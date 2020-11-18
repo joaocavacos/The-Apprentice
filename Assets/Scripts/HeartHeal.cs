@@ -5,7 +5,9 @@ using UnityEngine;
 
 public class HeartHeal : MonoBehaviour
 {
-    private float healAmmount = 30f;
+    private float healAmmount = 50f;
+
+    public AudioSource heal;
     
     private HealthSystem playerHp;
 
@@ -18,8 +20,9 @@ public class HeartHeal : MonoBehaviour
     {
         if (playerHp.CurrentHealth < playerHp.maxHealth)
         {
-            Destroy(gameObject);
+            heal.Play();
             playerHp.CurrentHealth += healAmmount;
+            Destroy(gameObject);
         }
     }
 

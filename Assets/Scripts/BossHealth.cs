@@ -12,9 +12,7 @@ public class BossHealth : MonoBehaviour
 
     private Animator animator;
 
-	//public GameObject deathParticle;
-
-	void Start()
+    void Start()
 	{
         animator = GetComponent<Animator>();
 	}

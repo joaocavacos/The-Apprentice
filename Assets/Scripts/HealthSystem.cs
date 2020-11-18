@@ -12,6 +12,8 @@ public class HealthSystem : MonoBehaviour
 	public Text numberHp;
 	ActionHandler changeScene;
 
+	public AudioSource playerHurt;
+
     void Awake()
     {
 		changeScene = GetComponent<ActionHandler>();
@@ -40,6 +42,7 @@ public class HealthSystem : MonoBehaviour
 
     public void TakeDamage(float damage) //Take damage from attack
 	{
+		playerHurt.Play();
 		CurrentHealth -= damage;
 		Debug.Log("Damage taken from enemy: " + damage);
 	}

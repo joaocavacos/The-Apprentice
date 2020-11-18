@@ -48,7 +48,7 @@ public class ActionHandler : MonoBehaviour
     private IEnumerator waitLoadScene(string sceneName) //a little delay for loading scenes
 	{
         transitionAnim.Play("FadeIn");
-        yield return new WaitForSeconds(0.9f);
-        SceneManager.LoadSceneAsync(sceneName);
+        yield return new WaitForSeconds(1f);
+        SceneManager.LoadScene(sceneName);
 	}
 }

@@ -21,7 +21,6 @@ public class Enemy : MonoBehaviour
     {
         if(enemy.enemyHP <= 0)
 		{
-            Debug.Log("Enemy destroyed");
             Destroy(gameObject);
 		}
     }
@@ -29,7 +28,7 @@ public class Enemy : MonoBehaviour
     public void TakeDamageEnemy(float damage)
 	{
         enemy.enemyHP -= damage;
-        Debug.Log("Enemy took some damage: " + damage);
+        enemy.enemyAnim.SetTrigger("Hurt");
         Debug.Log("Enemy hp: " + enemy.enemyHP);
 	}
 }

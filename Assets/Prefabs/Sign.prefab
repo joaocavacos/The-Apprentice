@@ -73,7 +73,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 1
   m_Sprite: {fileID: -4935616215965284393, guid: bf1992b25caf5e34eb1199d7529fd524,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -176,3 +176,4 @@ MonoBehaviour:
     sentences:
     - Forest
     - Yes
+  playerinRange: 0

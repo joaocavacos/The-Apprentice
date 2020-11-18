@@ -100,6 +100,8 @@ MonoBehaviour:
   enemyHP: 50
   enemySpeed: 6
   enemyDamage: 10
+  hitParticle: {fileID: 1416896596820944889, guid: 47d27b968c0054142814def11fb9aea8,
+    type: 3}
 --- !u!114 &2508377459715762574
 MonoBehaviour:
   m_ObjectHideFlags: 0

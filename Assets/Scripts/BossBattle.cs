@@ -11,11 +11,23 @@ public class BossBattle : MonoBehaviour
 
 	ActionHandler changeScene;
 
+	public AudioSource bossMusic;
+	public AudioSource gameplayMusic;
+
 	public CinemachineTargetGroup targetGroup;
 
 	private void Start()
 	{
 		changeScene = GetComponent<ActionHandler>();
+	}
+
+	private void OnTriggerEnter2D(Collider2D other)
+	{
+		if(other.CompareTag("Player") && boss != null)
+		{
+			gameplayMusic.Stop();
+			bossMusic.Play();
+		}
 	}
 
 	private void OnTriggerStay2D(Collider2D other)

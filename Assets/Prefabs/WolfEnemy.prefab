@@ -184,6 +184,8 @@ MonoBehaviour:
   enemyHP: 100
   enemySpeed: 3
   enemyDamage: 20
+  hitParticle: {fileID: 1416896596820944889, guid: 47d27b968c0054142814def11fb9aea8,
+    type: 3}
 --- !u!114 &4996575731623212004
 MonoBehaviour:
   m_ObjectHideFlags: 0
