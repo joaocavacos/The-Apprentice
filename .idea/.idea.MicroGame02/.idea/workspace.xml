@@ -10,9 +10,6 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/ManaSystem.cs" root0="FORCE_HIGHLIGHTING" />
-  </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
@@ -71,6 +68,8 @@
       <workItem from="1604951388045" duration="8316000" />
       <workItem from="1605119439630" duration="832000" />
       <workItem from="1605293408468" duration="4928000" />
+      <workItem from="1607476148515" duration="2835000" />
+      <workItem from="1607526706844" duration="598000" />
     </task>
     <servers />
   </component>

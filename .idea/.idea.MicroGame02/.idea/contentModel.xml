@@ -6,17 +6,30 @@
     <e p="E:\Faculdade&amp;Projects\3º Semestre\Desenvolvimento de Jogos 2D\MicroGame02" t="IncludeRecursive">
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
+        <e p="Parallax" t="Include">
+          <e p="parallax_forest_pack web" t="Include">
+            <e p="license.txt" t="Include" />
+          </e>
+          <e p="ParallaxEffect.cs" t="Include" />
+        </e>
         <e p="Scripts" t="Include">
+          <e p="ActionHandler.cs" t="Include" />
+          <e p="Boss.cs" t="Include" />
+          <e p="Boss_Run.cs" t="Include" />
+          <e p="BossAttack.cs" t="Include" />
+          <e p="BossBattle.cs" t="Include" />
+          <e p="BossHealth.cs" t="Include" />
           <e p="CameraController.cs" t="Include" />
           <e p="Dialogue.cs" t="Include" />
           <e p="DialogueManager.cs" t="Include" />
           <e p="DialogueTrigger.cs" t="Include" />
           <e p="Enemy.cs" t="Include" />
+          <e p="EnemyFollow.cs" t="Include" />
           <e p="HealthSystem.cs" t="Include" />
           <e p="HeartHeal.cs" t="Include" />
-          <e p="ManaSystem.cs" t="Include" />
           <e p="PlayerAttack.cs" t="Include" />
           <e p="PlayerMovement.cs" t="Include" />
+          <e p="SettingsManager.cs" t="Include" />
         </e>
       </e>
       <e p="MicroGame02.sln" t="IncludeFlat" />
